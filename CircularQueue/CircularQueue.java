@@ -1,23 +1,23 @@
 package CircularQueue;
 
-//Java program for insertion and deletion in Circular Queue
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 class CircularQueue {
-    private int size, front, rear; // Declaring the class variables.
-    private ArrayList<Integer> queue = new ArrayList<Integer>(); // Declaring array list of integer type.
+    private int size, front, rear; 
+    private ArrayList<Integer> queue = new ArrayList<Integer>(); 
 
-    CircularQueue(int size) { // Constructor
+    CircularQueue(int size) { 
         this.size = size;
         this.front = this.rear = -1;
     }
 
-    public void enQueue(int data) { // Method to insert a new element in the queue.
-        // Condition if queue is full.
+    public void enQueue(int data) { 
+       
         if ((front == 0 && rear == size - 1) || (rear == (front - 1) % (size - 1))) {
             System.out.print("Queue is Full");
-        } else if (front == -1) { // condition for empty queue.
+        } else if (front == -1) { 
             front = 0;
             rear = 0;
             queue.add(rear, data);
@@ -27,21 +27,21 @@ class CircularQueue {
         } else {
             rear = (rear + 1);
             if (front <= rear) {
-                queue.add(rear, data); // Adding a new element if
+                queue.add(rear, data); 
             } else {
-                queue.set(rear, data); // else updating old value
+                queue.set(rear, data);
             }
         }
     }
 
-    public int deQueue() { // Function to dequeue an element form the queue.
+    public int deQueue() { 
         int temp;
-        if (front == -1) { // Condition for empty queue.
+        if (front == -1) { 
             System.out.print("Queue is Empty");
-            return -1; // Return -1 in case of empty queue
+            return -1; 
         }
         temp = queue.get(front);
-        if (front == rear) { // Condition for only one element
+        if (front == rear) { 
             front = -1;
             rear = -1;
         } else if (front == size - 1) {
@@ -49,29 +49,28 @@ class CircularQueue {
         } else {
             front = front + 1;
         }
-        return temp; // Returns the dequeued element
+        return temp; 
     }
 
-    public void displayQueue() { // Method to display the elements of queue
-        if (front == -1) { // Condition for empty queue.
+    public void displayQueue() { 
+        if (front == -1) {
             System.out.print("Queue is Empty");
             return;
         }
-        // If rear has not crossed the max size or queue rear is still greater then
-        // front.
+    
         System.out.print("Elements in the " + "circular queue are: ");
         if (rear >= front) {
-            for (int i = front; i <= rear; i++) { // Loop to print elements from front to rear.
+            for (int i = front; i <= rear; i++) { 
                 System.out.print(queue.get(i));
                 System.out.print(" ");
             }
             System.out.println();
-        } else { // If rear crossed the max index and indexing has started in loop
-            for (int i = front; i < size; i++) { // Loop for printing elements from front to max size or last index
+        } else { 
+            for (int i = front; i < size; i++) { 
                 System.out.print(queue.get(i));
                 System.out.print(" ");
             }
-            for (int i = 0; i <= rear; i++) { // Loop for printing elements from 0th index till rear position
+            for (int i = 0; i <= rear; i++) { 
                 System.out.print(queue.get(i));
                 System.out.print(" ");
             }
