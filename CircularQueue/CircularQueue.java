@@ -92,7 +92,7 @@ class CircularQueue {
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:
-                    System.out.print("Enter the element to enqueue: ");
+                    System.out.print("Enter the element number to enqueue: ");
                     int data = scanner.nextInt();
                     q.enQueue(data);
                     break;
@@ -111,7 +111,8 @@ class CircularQueue {
                     System.exit(0);
                 default:
                     System.out.println("Invalid choice. Please enter a valid option.");
-                    break;
+                    System.out.println("Try Again!");
+                    continue;
             }
         }
     }
